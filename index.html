@@ -193,6 +193,60 @@ nav span{font-size:20px}
   main{padding-top:15px}
   .balance{font-size:46px}
 }
+
+/* Pennywise motion system */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.balance-card,
+.stat,
+.transaction {
+  animation: fadeUp 0.5s ease both;
+}
+
+.transaction {
+  transition: transform 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.transaction:active {
+  transform: scale(0.985);
+}
+
+.action,
+nav button {
+  transition: transform 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.action:active {
+  transform: scale(0.97);
+}
+
+.modal.show .modal-box {
+  animation: fadeUp 0.3s ease both;
+}
+
+.bar-fill {
+  transition: width 0.7s cubic-bezier(.2,.8,.2,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 </style>
 </head>
 <body>
