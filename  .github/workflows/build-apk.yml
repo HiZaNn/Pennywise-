@@ -14,7 +14,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'capacitor.config.json'
-      - '.github/workflows/build-apk.yml
+      - '.github/workflows/build-apk.yml'
 
 permissions:
   contents: read
