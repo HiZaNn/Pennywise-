@@ -6,21 +6,13 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'index.html'
-      - 'manifest.json'
-      - 'sw.js'
-      - 'icon*'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'capacitor.config.json'
-      - '.github/workflows/build-apk.yml'
 
 permissions:
   contents: read
 
 jobs:
   build:
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
@@ -47,19 +39,19 @@ jobs:
       - name: Build web app
         run: npm run build
 
-      - name: Create Android project
+      - name: Add Android platform
         run: npx cap add android
 
-      - name: Sync Android project
+      - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Build APK
+      - name: Build debug APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload Pennywise APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Pennywise-Android-APK
